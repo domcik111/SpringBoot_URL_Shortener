@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help page</title>
+</head>
+<body>
+
+<header>
+    <hgroup>
+        <h1> Help page</h1>
+    </hgroup>
+</header>
+<!-- GENERAL INFO -->
+<div class="row">
+    <div class="col-sm-8">
+        <h2 id="general">General info</h2>
+        <p style="color: blue">A HTTP service that serves to shorten URLs, with the following functionalities:</p>
+        <br>
+
+        <ul style="color: orangered">
+            <li>Registration Web address</li>
+            <li>Redirect client in accordance with the shortened URL</li>
+            <li>Usage statistics</li>
+        </ul>
+        <p>
+            The app is implemented using Spring Boot, JPA and a H2 (in-memory) db.<br>
+        </p>
+
+        <section>
+            <h2>Create account</h2>
+            <p>
+                To create account, make request to this uri 'http://127.0.0.1:8080/account' with POST method and
+                following
+                parameters in JSON format
+            </p>
+            <p>"AccountId": "{accountId}"</p>
+            <p>'accountId' is a String parameter, and is required</p>
+            <p>In case {accountId} is new, password is generated and returned</p>
+        </section>
+
+        <section>
+            <h2>URLs registration</h2>
+            <p>
+                To register URL, you need to make request to this uri 'http://127.0.0.1:8080/register' with POST method
+                and
+                following parameters in JSON format
+            </p>
+            <p>"url": "{url}"</p>
+            <p>"redirectType": "{redirectType}"</p>
+            <p>'url' is a String parameter, and is required</p>
+            <p>'redirectType' is a Integer parameter, and is optional (301 is default)</p>
+            <p>You also need to fill Authorization header with accountId and password, which was generated in first
+                step</p>
+            <p>In case authorization is valid, url and redirect type is returned</p>
+        </section>
+
+        <section>
+            <h2>Statistics</h2>
+            <p>
+                To retrieve statistic, make request to this uri 'http://127.0.0.1:8080/statistic/{accountId}' with GET
+                method
+            </p>
+            <p>'accountId' is a String parameter, and is required</p>
+            <p>'accountId' is string of account which you want to get statistic</p>
+            <p>You also need to fill Authorization header with accountId and password, which was generated in first
+                step</p>
+            <p>In case authorization is valid, statistic is returned</p>
+        </section>
+
+
+</body>
+</html>
